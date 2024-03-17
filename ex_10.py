@@ -1,0 +1,24 @@
+fname = input('Enter File:')
+if len(fname) < 1 : fname = 'clown.txt'
+hand = open(fname)
+
+many = dict()
+for line in hand:
+    line = line.rstrip()
+    wds = line.split()
+    for w in wds:
+       #idiom: retrieve/create/update counter
+        many[w]= many.get(w,0) + 1
+
+    # Find the top 5 word frequency
+
+tmp= dict()
+newlist = list()
+for k,v in many.items() :
+           tup = (v,k)
+           newlist.append(tup)
+
+cool = sorted(newlist, reverse=True)
+
+for v,k in cool[:5] :
+        print(k,v)
